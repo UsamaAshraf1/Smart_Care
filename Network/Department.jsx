@@ -9,7 +9,7 @@ const handleDepartmentsResponse = async (response) => {
 
 export const GetDepartments = async () => {
   try {
-    const response = await fetch(`${Base_url}/v1/category/get/all`, {
+    const response = await fetch(`${Base_url}/v1/department/get/all`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

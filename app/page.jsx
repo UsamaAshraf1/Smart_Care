@@ -140,7 +140,7 @@ export default function Home() {
               <path d="M12 2a3 3 0 0 0-3 3v1H6a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3v1a3 3 0 0 0 6 0v-1h3a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3V5a3 3 0 0 0-3-3z" />
             </svg>
           </div>
-          <div className="absolute bottom-20 right-1/3 w-20 h-20">
+          {/* <div className="absolute bottom-20 right-1/3 w-20 h-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -152,7 +152,7 @@ export default function Home() {
               <circle cx="12" cy="12" r="10" />
               <path d="M12 8v8M8 12h8" />
             </svg>
-          </div>
+          </div> */}
           <div className="absolute top-1/3 left-1/3 w-36 h-36">
             <svg
               xmlns="http://www.w3.org/2000/svg"
