@@ -1,6 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  JSXElementConstructor,
+  Key,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+} from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,12 +25,20 @@ import {
 } from "lucide-react";
 import { HeroSection } from "@/components/hero-section";
 import { TestimonialSection } from "@/components/testimonial-section";
-// import { DoctorCard } from "@/components/doctor-card";
 import { GetDepartments } from "../Network/Department";
 
 export default function Home() {
   const [doctorsData, setDoctorsData] = useState([]);
-  const [departmentsData, setDepartmentsData] = useState([]);
+  const [departmentsData, setDepartmentsData] = useState();
+  const fetchDepartments = async () => {
+    const response = await GetDepartments();
+    console.log(response);
+    setDepartmentsData(response?.data);
+  };
+  useEffect(() => {
+    fetchDepartments();
+  }, []);
+
   const doctors = [
     {
       image: "/placeholder.svg?height=300&width=300",
@@ -78,7 +94,8 @@ export default function Home() {
       specialty: "Internal Medicine",
       href: "/doctors/john-smith",
     },
-  ];
+  ]
+
   return (
     <div className="flex flex-col min-h-screen">
       <HeroSection />
@@ -225,7 +242,7 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-8 mt-12 md:grid-cols-2 lg:grid-cols-3">
-            <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            {/* <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
               <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/80 to-brand-blue opacity-0 transition-opacity z-10"></div>
               <div className="absolute top-0 right-0 p-4">
                 <div className="rounded-full bg-white p-3 shadow-md">
@@ -301,7 +318,41 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </div> */}
+
+            {departmentsData?.map((items, index) => {
+              return (
+                <>
+                  <div
+                    key={index}
+                    className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/80 to-brand-blue opacity-0 transition-opacity z-10"></div>
+                    <div className="absolute top-0 right-0 p-4">
+                      <div className="rounded-full bg-white p-3 shadow-md">
+                        <Users className="h-8 w-8 text-brand-red" />
+                      </div>
+                    </div>
+                    <div className="bg-white p-6 relative z-20">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">
+                        {items?.name}
+                      </h3>
+                      <p className="text-muted-foreground group-hover:text-white/80 transition-colors">
+                        {items?.shortDes}
+                      </p>
+                      <div className="mt-6 pt-4 border-t border-gray-100 group-hover:border-white/20 transition-colors">
+                        <Link
+                          href={`/departments/${items?.name}`}
+                          className="inline-flex items-center text-brand-blue font-medium group-hover:text-white transition-colors"
+                        >
+                          Learn More <ChevronRight className="ml-1 h-4 w-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
           </div>
           <div className="flex justify-center mt-12">
             <Link href="/departments">

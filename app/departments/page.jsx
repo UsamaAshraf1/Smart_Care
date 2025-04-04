@@ -1,8 +1,30 @@
-import Link from "next/link"
-import Image from "next/image"
-import { HeartPulse, Brain, Bone, Baby, Stethoscope, Microscope, ChevronRight, Users } from "lucide-react"
+"use client";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  HeartPulse,
+  Brain,
+  Bone,
+  Baby,
+  Stethoscope,
+  Microscope,
+  ChevronRight,
+  Users,
+} from "lucide-react";
+import { GetDepartments } from "@/Network/Department";
 
 export default function DepartmentsPage() {
+  const [departmentsData, setDepartmentsData] = useState();
+  const fetchDepartments = async () => {
+    const response = await GetDepartments();
+    console.log(response);
+    setDepartmentsData(response?.data);
+  };
+  useEffect(() => {
+    fetchDepartments();
+  }, []);
+
   const departments = [
     {
       id: "general-practice",
@@ -66,7 +88,8 @@ export default function DepartmentsPage() {
     {
       id: "gynecology",
       name: "Gynecology",
-      description: "Specialized care for women's health issues, including reproductive and hormonal health management.",
+      description:
+        "Specialized care for women's health issues, including reproductive and hormonal health management.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +127,8 @@ export default function DepartmentsPage() {
     {
       id: "family-medicine",
       name: "Family Medicine",
-      description: "Holistic healthcare for the entire family, addressing health concerns at every stage of life.",
+      description:
+        "Holistic healthcare for the entire family, addressing health concerns at every stage of life.",
       icon: <Users className="h-8 w-8 text-brand-red" />,
       image: "/placeholder.svg?height=300&width=500",
     },
@@ -151,7 +175,8 @@ export default function DepartmentsPage() {
     {
       id: "cardiology",
       name: "Cardiology*",
-      description: "Comprehensive heart care with advanced diagnostic and treatment options for cardiac conditions.",
+      description:
+        "Comprehensive heart care with advanced diagnostic and treatment options for cardiac conditions.",
       icon: <HeartPulse className="h-8 w-8 text-brand-red" />,
       image: "/placeholder.svg?height=300&width=500",
       comingSoon: true,
@@ -159,14 +184,16 @@ export default function DepartmentsPage() {
     {
       id: "laboratory",
       name: "Laboratory",
-      description: "State-of-the-art diagnostic testing services to support accurate diagnosis and treatment planning.",
+      description:
+        "State-of-the-art diagnostic testing services to support accurate diagnosis and treatment planning.",
       icon: <Microscope className="h-8 w-8 text-brand-red" />,
       image: "/placeholder.svg?height=300&width=500",
     },
     {
       id: "home-healthcare",
       name: "Home Healthcare",
-      description: "Bringing quality healthcare to your doorstep with our dedicated team of healthcare professionals.",
+      description:
+        "Bringing quality healthcare to your doorstep with our dedicated team of healthcare professionals.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +213,7 @@ export default function DepartmentsPage() {
       comingSoon: true,
       comingSoonText: "Coming in 2-3 months",
     },
-  ]
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -194,9 +221,12 @@ export default function DepartmentsPage() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Departments</h1>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                Our Departments
+              </h1>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Specialized care across multiple medical disciplines to address all your healthcare needs
+                Specialized care across multiple medical disciplines to address
+                all your healthcare needs
               </p>
             </div>
           </div>
@@ -206,9 +236,9 @@ export default function DepartmentsPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-brand-blue/10 to-brand-blue/5">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {departments.map((department) => (
+            {departmentsData?.map((department) => (
               <div
-                key={department.id}
+                key={department.cid}
                 className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/80 to-brand-blue opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
@@ -220,25 +250,27 @@ export default function DepartmentsPage() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  {department.comingSoon && (
+                  {/* {department.comingSoon && (
                     <div className="absolute top-4 left-4 z-20 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded">
                       {department.comingSoonText || "Coming Soon"}
                     </div>
-                  )}
+                  )} */}
                 </div>
                 <div className="absolute top-4 right-4 z-20">
-                  <div className="rounded-full bg-white p-3 shadow-md">{department.icon}</div>
+                  <div className="rounded-full bg-white p-3 shadow-md">
+                    {department.icon || <Stethoscope className="h-8 w-8 text-brand-red" />}
+                  </div>
                 </div>
                 <div className="bg-white p-6 relative z-20">
                   <h3 className="text-2xl font-bold mb-2 group-hover:text-brand-blue transition-colors">
                     {department.name}
                   </h3>
                   <p className="text-muted-foreground group-hover:text-gray-700 transition-colors">
-                    {department.description}
+                    {department?.shortDes}
                   </p>
                   <div className="mt-6 pt-4 border-t border-gray-100 group-hover:border-brand-blue/20 transition-colors">
                     <Link
-                      href={`/departments/${department.id}`}
+                      href={`/departments/${department.name}`}
                       className="inline-flex items-center text-brand-blue font-medium group-hover:text-brand-red transition-colors"
                     >
                       Learn More <ChevronRight className="ml-1 h-4 w-4" />
@@ -251,6 +283,5 @@ export default function DepartmentsPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-

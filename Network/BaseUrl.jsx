@@ -1,1 +1,1 @@
-export const Base_url = "Base_url";
+export const Base_url = "https://smart-care-backend-topaz.vercel.app";

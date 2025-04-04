@@ -9,20 +9,15 @@ const handleDepartmentsResponse = async (response) => {
 
 export const GetDepartments = async () => {
   try {
-    const response = await fetch(
-      `${Base_url}/orderLogs/api/orders/${id}/comments/`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const response = await fetch(`${Base_url}/v1/category/get/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return await handleDepartmentsResponse(response);
   } catch (error) {
-    console.error("Comment Add Error:", error.message);
+    console.error("Department Fetch Error:", error.message);
     throw error;
   }
 };
