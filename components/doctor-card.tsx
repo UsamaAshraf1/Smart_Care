@@ -14,7 +14,7 @@ export function DoctorCard({ image, name, specialty, href }: DoctorCardProps) {
   return (
     <Card className="overflow-hidden">
       <div className="relative h-[200px] w-full">
-        <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
+        <Image src={image || "/placeholder.svg"} alt="name" fill className="object-cover" />
       </div>
       <CardContent className="p-6 text-center">
         <h3 className="text-xl font-bold">{name}</h3>

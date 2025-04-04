@@ -21,3 +21,21 @@ export const GetDepartments = async () => {
     throw error;
   }
 };
+
+export const GetDepartmentsByName = async (name) => {
+  try {
+    const response = await fetch(
+      `${Base_url}/v1/department/get-by-name?name=${name}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return await handleDepartmentsResponse(response);
+  } catch (error) {
+    console.error("Department Fetch Error:", error.message);
+    throw error;
+  }
+};
