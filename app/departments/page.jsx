@@ -25,195 +25,195 @@ export default function DepartmentsPage() {
     fetchDepartments();
   }, []);
 
-  const departments = [
-    {
-      id: "general-practice",
-      name: "General Practice",
-      description:
-        "Comprehensive primary healthcare services for patients of all ages, focusing on preventive care and overall wellness.",
-      icon: <Stethoscope className="h-8 w-8 text-brand-red" />,
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "dentistry",
-      name: "Dentistry",
-      description:
-        "Complete dental care services including preventive, restorative, and cosmetic treatments for optimal oral health.",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-8 w-8 text-brand-red"
-        >
-          <path d="M12 5.5c-1.5-1-2-2.5-2-3.5 0-1.5.5-2 2-2s2 .5 2 2c0 1-.5 2.5-2 3.5z" />
-          <path d="M8.5 8.5c-1.5-1.5-3-2-4-2-1.5 0-2 .5-2 2s.5 2 2 2c1 0 2.5-.5 4-2z" />
-          <path d="M15.5 8.5c1.5-1.5 3-2 4-2 1.5 0 2 .5 2 2s-.5 2-2 2c-1 0-2.5-.5-4-2z" />
-          <path d="M12 18.5c-1.5 1-2 2.5-2 3.5 0 1.5.5 2 2 2s2-.5 2-2c0-1-.5-2.5-2-3.5z" />
-          <path d="M8.5 15.5c-1.5 1.5-3 2-4 2-1.5 0-2-.5-2-2s.5-2 2-2c1 0 2.5.5 4 2z" />
-          <path d="M15.5 15.5c1.5 1.5 3 2 4 2 1.5 0 2-.5 2-2s-.5-2-2-2c-1 0-2.5.5-4 2z" />
-          <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-        </svg>
-      ),
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "dermatology",
-      name: "Dermatology & Aesthetics",
-      description:
-        "Expert care for skin conditions and aesthetic treatments to enhance your natural beauty and skin health.",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-8 w-8 text-brand-red"
-        >
-          <path d="M8 14v.5"></path>
-          <path d="M12 14v.5"></path>
-          <path d="M16 14v.5"></path>
-          <path d="M17 18.5a9 9 0 1 0-10 0"></path>
-        </svg>
-      ),
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "gynecology",
-      name: "Gynecology",
-      description:
-        "Specialized care for women's health issues, including reproductive and hormonal health management.",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-8 w-8 text-brand-red"
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <circle cx="12" cy="10" r="3"></circle>
-          <path d="M7 16.3c0-1 1.2-2.1 2.7-2.6a9 9 0 0 1 4.6 0c1.5.5 2.7 1.6 2.7 2.6"></path>
-        </svg>
-      ),
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "pediatrics",
-      name: "Pediatrics",
-      description:
-        "Specialized healthcare for infants, children, and adolescents, focusing on growth, development, and childhood illnesses.",
-      icon: <Baby className="h-8 w-8 text-brand-red" />,
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "internal-medicine",
-      name: "Internal Medicine",
-      description:
-        "Comprehensive care for adults, focusing on the prevention, diagnosis, and treatment of adult diseases.",
-      icon: <Stethoscope className="h-8 w-8 text-brand-red" />,
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "family-medicine",
-      name: "Family Medicine",
-      description:
-        "Holistic healthcare for the entire family, addressing health concerns at every stage of life.",
-      icon: <Users className="h-8 w-8 text-brand-red" />,
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "neurology",
-      name: "Neurology",
-      description:
-        "Specialized care for disorders of the brain, spine, and nervous system, using advanced diagnostic techniques.",
-      icon: <Brain className="h-8 w-8 text-brand-red" />,
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "orthopedics",
-      name: "Orthopedics",
-      description:
-        "Expert care for bone and joint conditions, injuries, and disorders, with both surgical and non-surgical treatments.",
-      icon: <Bone className="h-8 w-8 text-brand-red" />,
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "tcam",
-      name: "TCAM*",
-      description:
-        "Traditional, Complementary and Alternative Medicine integrating ancient healing practices with modern healthcare.",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-8 w-8 text-brand-red"
-        >
-          <path d="M12 2L4 10l8 8 8-8-8-8z"></path>
-          <path d="M4 22h16"></path>
-          <path d="M12 18v4"></path>
-        </svg>
-      ),
-      image: "/placeholder.svg?height=300&width=500",
-      comingSoon: true,
-    },
-    {
-      id: "cardiology",
-      name: "Cardiology*",
-      description:
-        "Comprehensive heart care with advanced diagnostic and treatment options for cardiac conditions.",
-      icon: <HeartPulse className="h-8 w-8 text-brand-red" />,
-      image: "/placeholder.svg?height=300&width=500",
-      comingSoon: true,
-    },
-    {
-      id: "laboratory",
-      name: "Laboratory",
-      description:
-        "State-of-the-art diagnostic testing services to support accurate diagnosis and treatment planning.",
-      icon: <Microscope className="h-8 w-8 text-brand-red" />,
-      image: "/placeholder.svg?height=300&width=500",
-    },
-    {
-      id: "home-healthcare",
-      name: "Home Healthcare",
-      description:
-        "Bringing quality healthcare to your doorstep with our dedicated team of healthcare professionals.",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-8 w-8 text-brand-red"
-        >
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-      ),
-      image: "/placeholder.svg?height=300&width=500",
-      comingSoon: true,
-      comingSoonText: "Coming in 2-3 months",
-    },
-  ];
+  // const departments = [
+  //   {
+  //     id: "general-practice",
+  //     name: "General Practice",
+  //     description:
+  //       "Comprehensive primary healthcare services for patients of all ages, focusing on preventive care and overall wellness.",
+  //     icon: <Stethoscope className="h-8 w-8 text-brand-red" />,
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "dentistry",
+  //     name: "Dentistry",
+  //     description:
+  //       "Complete dental care services including preventive, restorative, and cosmetic treatments for optimal oral health.",
+  //     icon: (
+  //       <svg
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         viewBox="0 0 24 24"
+  //         fill="none"
+  //         stroke="currentColor"
+  //         strokeWidth="2"
+  //         strokeLinecap="round"
+  //         strokeLinejoin="round"
+  //         className="h-8 w-8 text-brand-red"
+  //       >
+  //         <path d="M12 5.5c-1.5-1-2-2.5-2-3.5 0-1.5.5-2 2-2s2 .5 2 2c0 1-.5 2.5-2 3.5z" />
+  //         <path d="M8.5 8.5c-1.5-1.5-3-2-4-2-1.5 0-2 .5-2 2s.5 2 2 2c1 0 2.5-.5 4-2z" />
+  //         <path d="M15.5 8.5c1.5-1.5 3-2 4-2 1.5 0 2 .5 2 2s-.5 2-2 2c-1 0-2.5-.5-4-2z" />
+  //         <path d="M12 18.5c-1.5 1-2 2.5-2 3.5 0 1.5.5 2 2 2s2-.5 2-2c0-1-.5-2.5-2-3.5z" />
+  //         <path d="M8.5 15.5c-1.5 1.5-3 2-4 2-1.5 0-2-.5-2-2s.5-2 2-2c1 0 2.5.5 4 2z" />
+  //         <path d="M15.5 15.5c1.5 1.5 3 2 4 2 1.5 0 2-.5 2-2s-.5-2-2-2c-1 0-2.5.5-4 2z" />
+  //         <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+  //       </svg>
+  //     ),
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "dermatology",
+  //     name: "Dermatology & Aesthetics",
+  //     description:
+  //       "Expert care for skin conditions and aesthetic treatments to enhance your natural beauty and skin health.",
+  //     icon: (
+  //       <svg
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         viewBox="0 0 24 24"
+  //         fill="none"
+  //         stroke="currentColor"
+  //         strokeWidth="2"
+  //         strokeLinecap="round"
+  //         strokeLinejoin="round"
+  //         className="h-8 w-8 text-brand-red"
+  //       >
+  //         <path d="M8 14v.5"></path>
+  //         <path d="M12 14v.5"></path>
+  //         <path d="M16 14v.5"></path>
+  //         <path d="M17 18.5a9 9 0 1 0-10 0"></path>
+  //       </svg>
+  //     ),
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "gynecology",
+  //     name: "Gynecology",
+  //     description:
+  //       "Specialized care for women's health issues, including reproductive and hormonal health management.",
+  //     icon: (
+  //       <svg
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         viewBox="0 0 24 24"
+  //         fill="none"
+  //         stroke="currentColor"
+  //         strokeWidth="2"
+  //         strokeLinecap="round"
+  //         strokeLinejoin="round"
+  //         className="h-8 w-8 text-brand-red"
+  //       >
+  //         <circle cx="12" cy="12" r="10"></circle>
+  //         <circle cx="12" cy="10" r="3"></circle>
+  //         <path d="M7 16.3c0-1 1.2-2.1 2.7-2.6a9 9 0 0 1 4.6 0c1.5.5 2.7 1.6 2.7 2.6"></path>
+  //       </svg>
+  //     ),
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "pediatrics",
+  //     name: "Pediatrics",
+  //     description:
+  //       "Specialized healthcare for infants, children, and adolescents, focusing on growth, development, and childhood illnesses.",
+  //     icon: <Baby className="h-8 w-8 text-brand-red" />,
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "internal-medicine",
+  //     name: "Internal Medicine",
+  //     description:
+  //       "Comprehensive care for adults, focusing on the prevention, diagnosis, and treatment of adult diseases.",
+  //     icon: <Stethoscope className="h-8 w-8 text-brand-red" />,
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "family-medicine",
+  //     name: "Family Medicine",
+  //     description:
+  //       "Holistic healthcare for the entire family, addressing health concerns at every stage of life.",
+  //     icon: <Users className="h-8 w-8 text-brand-red" />,
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "neurology",
+  //     name: "Neurology",
+  //     description:
+  //       "Specialized care for disorders of the brain, spine, and nervous system, using advanced diagnostic techniques.",
+  //     icon: <Brain className="h-8 w-8 text-brand-red" />,
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "orthopedics",
+  //     name: "Orthopedics",
+  //     description:
+  //       "Expert care for bone and joint conditions, injuries, and disorders, with both surgical and non-surgical treatments.",
+  //     icon: <Bone className="h-8 w-8 text-brand-red" />,
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "tcam",
+  //     name: "TCAM*",
+  //     description:
+  //       "Traditional, Complementary and Alternative Medicine integrating ancient healing practices with modern healthcare.",
+  //     icon: (
+  //       <svg
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         viewBox="0 0 24 24"
+  //         fill="none"
+  //         stroke="currentColor"
+  //         strokeWidth="2"
+  //         strokeLinecap="round"
+  //         strokeLinejoin="round"
+  //         className="h-8 w-8 text-brand-red"
+  //       >
+  //         <path d="M12 2L4 10l8 8 8-8-8-8z"></path>
+  //         <path d="M4 22h16"></path>
+  //         <path d="M12 18v4"></path>
+  //       </svg>
+  //     ),
+  //     image: "/placeholder.svg?height=300&width=500",
+  //     comingSoon: true,
+  //   },
+  //   {
+  //     id: "cardiology",
+  //     name: "Cardiology*",
+  //     description:
+  //       "Comprehensive heart care with advanced diagnostic and treatment options for cardiac conditions.",
+  //     icon: <HeartPulse className="h-8 w-8 text-brand-red" />,
+  //     image: "/placeholder.svg?height=300&width=500",
+  //     comingSoon: true,
+  //   },
+  //   {
+  //     id: "laboratory",
+  //     name: "Laboratory",
+  //     description:
+  //       "State-of-the-art diagnostic testing services to support accurate diagnosis and treatment planning.",
+  //     icon: <Microscope className="h-8 w-8 text-brand-red" />,
+  //     image: "/placeholder.svg?height=300&width=500",
+  //   },
+  //   {
+  //     id: "home-healthcare",
+  //     name: "Home Healthcare",
+  //     description:
+  //       "Bringing quality healthcare to your doorstep with our dedicated team of healthcare professionals.",
+  //     icon: (
+  //       <svg
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         viewBox="0 0 24 24"
+  //         fill="none"
+  //         stroke="currentColor"
+  //         strokeWidth="2"
+  //         strokeLinecap="round"
+  //         strokeLinejoin="round"
+  //         className="h-8 w-8 text-brand-red"
+  //       >
+  //         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+  //         <polyline points="9 22 9 12 15 12 15 22"></polyline>
+  //       </svg>
+  //     ),
+  //     image: "/placeholder.svg?height=300&width=500",
+  //     comingSoon: true,
+  //     comingSoonText: "Coming in 2-3 months",
+  //   },
+  // ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -258,7 +258,9 @@ export default function DepartmentsPage() {
                 </div>
                 <div className="absolute top-4 right-4 z-20">
                   <div className="rounded-full bg-white p-3 shadow-md">
-                    {department.icon || <Stethoscope className="h-8 w-8 text-brand-red" />}
+                    {department.icon || (
+                      <Stethoscope className="h-8 w-8 text-brand-red" />
+                    )}
                   </div>
                 </div>
                 <div className="bg-white p-6 relative z-20">
@@ -266,7 +268,9 @@ export default function DepartmentsPage() {
                     {department.name}
                   </h3>
                   <p className="text-muted-foreground group-hover:text-gray-700 transition-colors">
-                    {department?.shortDes}
+                    {department?.shortDes?.length > 120
+                      ? `${department.shortDes.slice(0, 120)}...`
+                      : department.shortDes}
                   </p>
                   <div className="mt-6 pt-4 border-t border-gray-100 group-hover:border-brand-blue/20 transition-colors">
                     <Link

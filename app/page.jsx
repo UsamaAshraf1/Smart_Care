@@ -94,7 +94,7 @@ export default function Home() {
       specialty: "Internal Medicine",
       href: "/doctors/john-smith",
     },
-  ]
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -241,86 +241,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-8 mt-12 md:grid-cols-2 lg:grid-cols-3">
-            {/* <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/80 to-brand-blue opacity-0 transition-opacity z-10"></div>
-              <div className="absolute top-0 right-0 p-4">
-                <div className="rounded-full bg-white p-3 shadow-md">
-                  <HeartPulse className="h-8 w-8 text-brand-red" />
-                </div>
-              </div>
-              <div className="bg-white p-6 relative z-20">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">
-                  Cardiology
-                </h3>
-                <p className="text-muted-foreground group-hover:text-white/80 transition-colors">
-                  Comprehensive heart care with advanced diagnostic and
-                  treatment options for cardiac conditions.
-                </p>
-                <div className="mt-6 pt-4 border-t border-gray-100 group-hover:border-white/20 transition-colors">
-                  <Link
-                    href="/departments/cardiology"
-                    className="inline-flex items-center text-brand-blue font-medium group-hover:text-white transition-colors"
-                  >
-                    Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/80 to-brand-blue opacity-0 transition-opacity z-10"></div>
-              <div className="absolute top-0 right-0 p-4">
-                <div className="rounded-full bg-white p-3 shadow-md">
-                  <Stethoscope className="h-8 w-8 text-brand-red" />
-                </div>
-              </div>
-              <div className="bg-white p-6 relative z-20">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">
-                  Internal Medicine
-                </h3>
-                <p className="text-muted-foreground group-hover:text-white/80 transition-colors">
-                  General adult healthcare for diagnosis and treatment of
-                  various acute and chronic conditions.
-                </p>
-                <div className="mt-6 pt-4 border-t border-gray-100 group-hover:border-white/20 transition-colors">
-                  <Link
-                    href="/departments/internal-medicine"
-                    className="inline-flex items-center text-brand-blue font-medium group-hover:text-white transition-colors"
-                  >
-                    Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/80 to-brand-blue opacity-0 transition-opacity z-10"></div>
-              <div className="absolute top-0 right-0 p-4">
-                <div className="rounded-full bg-white p-3 shadow-md">
-                  <Users className="h-8 w-8 text-brand-red" />
-                </div>
-              </div>
-              <div className="bg-white p-6 relative z-20">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">
-                  Pediatrics
-                </h3>
-                <p className="text-muted-foreground group-hover:text-white/80 transition-colors">
-                  Specialized healthcare for infants, children, and adolescents
-                  with compassionate care.
-                </p>
-                <div className="mt-6 pt-4 border-t border-gray-100 group-hover:border-white/20 transition-colors">
-                  <Link
-                    href="/departments/pediatrics"
-                    className="inline-flex items-center text-brand-blue font-medium group-hover:text-white transition-colors"
-                  >
-                    Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div> */}
-
-            {departmentsData?.map((items, index) => {
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8">
+            {departmentsData?.slice(0, 3)?.map((items, index) => {
               return (
                 <>
                   <div
@@ -338,7 +260,9 @@ export default function Home() {
                         {items?.name}
                       </h3>
                       <p className="text-muted-foreground group-hover:text-white/80 transition-colors">
-                        {items?.shortDes}
+                        {items?.shortDes?.length > 120
+                          ? `${items.shortDes.slice(0, 120)}...`
+                          : items.shortDes}
                       </p>
                       <div className="mt-6 pt-4 border-t border-gray-100 group-hover:border-white/20 transition-colors">
                         <Link
@@ -354,7 +278,7 @@ export default function Home() {
               );
             })}
           </div>
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center mt-8">
             <Link href="/departments">
               <Button
                 variant="outline"
@@ -382,24 +306,6 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* <DoctorCard
-              image="/placeholder.svg?height=300&width=300"
-              name="Dr. Sarah Johnson"
-              specialty="Cardiology"
-              href="/doctors/sarah-johnson"
-            />
-            <DoctorCard
-              image="/placeholder.svg?height=300&width=300"
-              name="Dr. Michael Chen"
-              specialty="Neurology"
-              href="/doctors/michael-chen"
-            />
-            <DoctorCard
-              image="/placeholder.svg?height=300&width=300"
-              name="Dr. Emily Rodriguez"
-              specialty="Pediatrics"
-              href="/doctors/emily-rodriguez"
-            /> */}
             {(doctors?.slice(0, 3) || [])?.map((doctor, index) => (
               <div
                 key={index}
