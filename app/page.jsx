@@ -375,7 +375,7 @@ export default function Home() {
 
                   <div className="flex justify-between items-center pt-4 border-t border-gray-100 group-hover:border-white/20 transition-colors">
                     <Link
-                      href={doctor.href || "/"}
+                      href={`doctors/${doctor.name}`}
                       className="text-brand-blue font-medium group-hover:text-white transition-colors"
                     >
                       View Profile
