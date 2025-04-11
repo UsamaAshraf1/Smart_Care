@@ -19,12 +19,18 @@ import { BookingWidget } from "@/components/booking-widget";
 import { useSearchParams } from "next/navigation";
 import { GetDoctors } from "@/Network/Doctors";
 
+import { use } from "react";
+
 export default function DoctorPage({ params }) {
   const searchParams = useSearchParams();
   const activeTab = searchParams.get("tab") || "about";
   const [doctor, setDoctor] = useState();
 
-  const decodedId = decodeURIComponent(params?.id || "").replace(/%20/g, " ");
+  const resolvedParams = use(params); // Unwrap params Promise
+  const decodedId = decodeURIComponent(resolvedParams?.id || "").replace(
+    /%20/g,
+    " "
+  );
   console.log(decodedId);
 
   // const doctors = {
@@ -198,7 +204,7 @@ export default function DoctorPage({ params }) {
             <div className="flex items-center justify-center">
               <div className="relative h-[300px] w-[300px] md:h-[400px] md:w-[400px] overflow-hidden rounded-full border-4 border-background shadow-xl">
                 <Image
-                  src={doctor?.image || "/placeholder.svg"}
+                  src={"/placeholder.svg?height=400&width=400"}
                   alt={doctor?.name}
                   fill
                   className="object-cover"
